@@ -21,19 +21,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $del = $pdo->prepare("DELETE FROM posts WHERE id = ?");
   $del->execute([$id]);
 
-  header("Location: index.php");
+  header("Location: /Coursework/index.php");
   exit;
 }
 ?>
 
 <h2 class="page-title">🗑️ Delete Confirmation</h2>
 <div class="form-auth">
-  <p>Are you sure you want to delete this post?</p>
-  <p><strong>Title:</strong> <?= htmlspecialchars($post['title']) ?></p>
-  <form method="POST">
-    <input type="submit" value="Yes, Delete" class="btn danger">
-    <a href="index.php" class="btn-outline">Cancel</a>
-  </form>
+  <p style="text-align: center;">Are you sure you want to delete this post?</p>
+
+  <div class="delete-buttons">
+    <form method="POST">
+      <button type="submit" class="btn danger">Yes, Delete</button>
+    </form>
+    <a href="/Coursework/index.php" class="btn-outline">Cancel</a>
+  </div>
 </div>
+
+
 
 <?php include '../includes/footer.php'; ?>

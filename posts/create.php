@@ -1,12 +1,17 @@
 <?php include '../includes/header.php'; include '../dbase/config.php';
 
+//Cho ca admin va student post bai
+if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['student', 'admin'])) {
+  header("Location: ../login.php");
+  exit;
+}
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $title = $_POST['title'];
   $content = $_POST['content'];
   $user_id = $_POST['user_id'];
   $subject_id = $_POST['subject_id'];
-
   $screenshot = null;
+  
   if (!empty($_FILES['screenshot']['name'])) {
     $upload_dir = '../uploads/';
     $filename = time() . '_' . basename($_FILES['screenshot']['name']);
@@ -20,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $stmt = $pdo->prepare("INSERT INTO posts (title, content, user_id, subject_id, screenshot) VALUES (?, ?, ?, ?, ?)");
   $stmt->execute([$title, $content, $user_id, $subject_id, $screenshot]);
 
-  header("Location: index.php");
+  header("Location: /Coursework/index.php");
   exit;
 }
 
@@ -36,14 +41,14 @@ $subjects = $pdo->query("SELECT * FROM subjects")->fetchAll();
   <label>Content:</label>
   <textarea name="content" rows="5" style="width: 411px; height: 83px;" required></textarea>
 
-  <label>User:</label>
-  <select name="user_id">
-    <?php foreach ($users as $u): ?>
-      <option value="<?= $u['id'] ?>"><?= htmlspecialchars($u['username']) ?></option>
-    <?php endforeach; ?>
-  </select>
+  
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <label style="margin: 0;">User:</label>
+    <input type="hidden" name="user_id" value="<?= $_SESSION['user_id'] ?>">
+    <span><strong><?= htmlspecialchars($_SESSION['username']) ?></strong></span>
+  </div>
 
-  <label>Subject:</label>
+  <label>Modules:</label>
   <select name="subject_id">
     <?php foreach ($subjects as $s): ?>
       <option value="<?= $s['id'] ?>"><?= htmlspecialchars($s['name']) ?></option>
