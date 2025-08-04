@@ -1,41 +1,75 @@
-.site-header {
-  background-color: #005b96;
-  color: white;
-  padding: 10px 0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* =============================================
+   Base Settings
+   ============================================= */
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* =============================================
+   Layout Containers
+   ============================================= */
+.nav-container,
+.delete-buttons,
+.form-delete-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
 .nav-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  width: 90%;
+  justify-content: space-between;
   max-width: 1200px;
-  margin: auto;
+  width: 90%;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.card-container {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+/* =============================================
+   Header
+   ============================================= */
+.site-header {
+  background-color: #005b96;
+  color: #fff;
+  padding: 10px 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo a {
-  font-size: 24px;
-  color: white;
-  text-decoration: none;
+  color: #fff;
+  font-size: 1.5rem;
   font-weight: bold;
 }
 
 .main-nav ul {
-  list-style: none;
   display: flex;
   gap: 20px;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
 .main-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-weight: 500;
+  color: #fff;
   padding: 6px 12px;
-  transition: background-color 0.3s;
+  font-weight: 500;
   border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 .main-nav ul li a:hover {
@@ -47,52 +81,95 @@
   gap: 10px;
 }
 
-.auth-links .btn,
-.auth-links .btn-outline {
-  padding: 6px 12px;
-  border-radius: 5px;
-  font-weight: bold;
-  text-decoration: none;
-  transition: 0.3s;
+/* Override logout in header */
+.site-header .btn-outline {
+  border-color: #fff;
+  color: #fff;
+  background: transparent;
 }
 
-.auth-links .btn {
-  background-color: #28a745;
-  color: white;
-}
-
-.auth-links .btn:hover {
-  background-color: #1f7a33;
-}
-
-.auth-links .btn-outline {
-  border: 2px solid white;
-  color: white;
-}
-
-.auth-links .btn-outline:hover {
-  background-color: white;
+.site-header .btn-outline:hover {
+  background-color: #fff;
   color: #005b96;
 }
 
+/* =============================================
+   Buttons & Links
+   ============================================= */
+.btn,
+.btn-outline,
+.btn-small {
+  display: inline-block;
+  font-weight: bold;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.btn {
+  background-color: #005b96;
+  color: #fff;
+  padding: 8px 16px;
+}
+
+.btn:hover {
+  background-color: #003f6b;
+}
+
+.btn-outline {
+  border: 2px solid #005b96;
+  color: #005b96;
+  padding: 6px 14px;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background-color: #005b96;
+  color: #fff;
+}
+
+.btn.danger,
+.btn-small.danger {
+  background-color: #d9534f;
+  color: #fff;
+}
+
+.btn.danger:hover {
+  background-color: #b52b27;
+}
+
+.btn-small {
+  font-size: 0.813rem;
+  padding: 4px 10px;
+  margin-right: 5px;
+}
+
+.card-actions .btn-small {
+  margin-right: 0;
+  padding: 6px 10px;
+}
+
+/* =============================================
+   Authentication Forms
+   ============================================= */
 .form-auth {
   max-width: 400px;
-  margin: auto;
-  background-color: #ffffff;
+  margin: 2rem auto;
   padding: 20px;
+  background-color: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .form-auth label {
   display: block;
-  margin-top: 10px;
+  margin-top: 1rem;
   font-weight: bold;
 }
 
-.form-auth input[type="text"],
 .form-auth input[type="email"],
-.form-auth input[type="password"] {
+.form-auth input[type="password"],
+.form-auth input[type="text"] {
   width: 100%;
   padding: 8px;
   margin-top: 5px;
@@ -103,12 +180,12 @@
 .form-auth input[type="submit"] {
   width: 100%;
   padding: 10px;
-  background-color: #005b96;
-  color: white;
+  margin-top: 1rem;
   border: none;
-  margin-top: 15px;
-  cursor: pointer;
   border-radius: 5px;
+  background-color: #005b96;
+  color: #fff;
+  cursor: pointer;
 }
 
 .form-auth input[type="submit"]:hover {
@@ -116,145 +193,95 @@
 }
 
 .form-auth p {
+  margin-top: 1rem;
   text-align: center;
-  margin-top: 10px;
 }
 
+/* =============================================
+   Page Titles & Text
+   ============================================= */
 .page-title {
   text-align: center;
-  font-size: 28px;
-  margin-bottom: 20px;
+  font-size: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 
-.btn {
-  display: inline-block;
-  background-color: #005b96;
-  color: white;
-  padding: 8px 16px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.btn:hover {
-  background-color: #003f6b;
-}
-
-.btn-outline {
-  display: inline-block;
-  border: 2px solid #005b96;
-  color: #005b96;
-  padding: 6px 14px;
-  text-decoration: none;
-  border-radius: 5px;
-}
-
-.btn-outline:hover {
-  background-color: #005b96;
-  color: white;
-}
-
-.btn-small {
-  padding: 4px 10px;
-  font-size: 13px;
-  margin-right: 5px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 3px;
-  text-decoration: none;
-}
-
-.btn-small.danger {
-  background-color: #d9534f;
-}
-
-.btn.danger {
-  background-color: #d9534f;
-}
-
-.btn.danger:hover {
-  background-color: #b52b27;
-}
-
-.form-delete-actions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.delete-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 20px;
-  padding-right:20px;
-}
-
-.delete-buttons form,
-.delete-buttons a {
-  display: inline-block;
-}
-
-.card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 20px;
-  margin-top: 30px;
-}
-
+/* =============================================
+   Cards
+   ============================================= */
 .qa-card {
-  background: #fff;
+  padding: 1rem;
+  overflow: hidden;
+  background-color: #fff;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s;
 }
 
 .qa-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.qa-card img {
+  display: block;
+  max-width: 100%;
+  margin-top: 1rem;
+  object-fit: contain;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
 .qa-card h3 {
-  font-size: 18px;
-  margin-bottom: 8px;
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
   color: #2c3e50;
 }
 
 .qa-card p {
-  font-size: 15px;
-  margin: 5px 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .card-actions {
-  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  margin-top: 0.75rem;
 }
 
-.card-actions .btn-small {
-  padding: 6px 10px;
-  font-size: 13px;
-  margin-right: 8px;
-  text-decoration: none;
-}
-
-.card-actions .btn-small.danger {
-  background-color: #e74c3c;
-  color: #fff;
-}
-
+/* =============================================
+   Tables
+   ============================================= */
 .styled-table {
   width: 100%;
+  margin-top: 1.25rem;
   border-collapse: collapse;
-  margin-top: 20px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
 }
 
-.styled-table th, .styled-table td {
-  border: 1px solid #ddd;
+.styled-table th,
+.styled-table td {
   padding: 10px;
   text-align: center;
+  border: 1px solid #ddd;
 }
 
+/* =============================================
+   Utility Text
+   ============================================= */
+.card-author {
+  color: #6b7280;
+  font-size: 1rem;
+  margin-bottom: 0.25rem;
+}
 
-
-
+.card-subject {
+  color: #4338ca;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}

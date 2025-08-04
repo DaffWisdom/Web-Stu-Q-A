@@ -1,6 +1,6 @@
 <?php include '../includes/header.php'; include '../dbase/config.php';
 
-//Cho ca admin va student post bai
+//Kiem tra dang nhap
 if (!isset($_SESSION['user_id']) || !in_array($_SESSION['role'], ['student', 'admin'])) {
   header("Location: ../login.php");
   exit;
@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $user_id = $_POST['user_id'];
   $subject_id = $_POST['subject_id'];
   $screenshot = null;
-  
+
   if (!empty($_FILES['screenshot']['name'])) {
     $upload_dir = '../uploads/';
     $filename = time() . '_' . basename($_FILES['screenshot']['name']);
@@ -57,7 +57,6 @@ $subjects = $pdo->query("SELECT * FROM subjects")->fetchAll();
 
   <label>Screenshot (optional):</label>
   <input type="file" name="screenshot">
-
   <input type="submit" value="Submit Post">
 </form>
 

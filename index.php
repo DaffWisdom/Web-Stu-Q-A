@@ -39,12 +39,18 @@ $stmt = $pdo->query("
   <?php while ($row = $stmt->fetch()): ?>
     <div class="qa-card">
       <h3><?= htmlspecialchars($row['title']) ?></h3>
-      <p><strong>Author:</strong> <?= htmlspecialchars($row['username']) ?></p>
-      <p><strong>Subject:</strong> <?= htmlspecialchars($row['subject_name']) ?></p>
-      <p><strong>Content:</strong><br> <?= nl2br(htmlspecialchars($row['content'])) ?></p>
+      <div class="card-author">
+        <p><strong>Author:</strong> <?= htmlspecialchars($row['username']) ?></p>
+      </div>
 
+      <div class="card-subject">
+        <p><strong>Subject:</strong> <?= htmlspecialchars($row['subject_name']) ?></p>
+      </div>
+      
+      <p><strong>Content:</strong><br> <?= nl2br(htmlspecialchars($row['content'])) ?></p>
+      
       <?php if (!empty($row['screenshot'])): ?>
-        <div class="card-img">
+        <div class="qa-card img">
           <img src="uploads/<?= htmlspecialchars($row['screenshot']) ?>" alt="Screenshot">
         </div>
       <?php endif; ?>

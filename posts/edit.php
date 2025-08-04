@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   $user_id = $_SESSION['user_id']; // cố định là người đang đăng nhập
   $subject_id = $_POST['subject_id'];
   $screenshot = $post['screenshot'];
+  
 
   if (!empty($_FILES['screenshot']['name'])) {
     $upload_dir = '../uploads/';

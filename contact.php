@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 </p>
 
 <form class="form-auth" method="POST">
-  <label>Your Name:</label>
+  <label>Your Username:</label>
   <input type="text" name="name" required>
 
   <label>Your Email:</label>

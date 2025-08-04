@@ -14,7 +14,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
 <header class="site-header">
   <div class="nav-container">
-    <div class="logo">
+    <div class="logo a">
       <a href="/Coursework/index.php">📘 Q&A Portal</a>
     </div>
 
@@ -35,7 +35,7 @@ if (session_status() === PHP_SESSION_NONE) {
       <?php if (isset($_SESSION['username'])): ?>
         <a href="/Coursework/logout.php" class="btn-outline">Logout</a>
       <?php else: ?>
-        <a href="/Coursework/login.php" class="btn">Login</a>
+        <a href="/Coursework/login.php" class="btn-outline">Login</a>
         <a href="/Coursework/register.php" class="btn-outline">Register</a>
       <?php endif; ?>
     </div>

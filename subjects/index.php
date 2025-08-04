@@ -20,6 +20,7 @@ $stmt = $pdo->query("SELECT * FROM subjects ORDER BY name ASC");
 
       <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
         <a href="edit.php?id=<?= $row['id'] ?>" class="btn-small">Edit</a>
+        <a href="delete.php?id=<?= $row['id'] ?>" class="btn-small danger">Delete</a>
       <?php endif; ?>
     </div>
   <?php endwhile; ?>
